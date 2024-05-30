@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvd8x6j8t5alp"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_763sq"]
+[ext_resource type="Texture2D" uid="uid://o0oy03yjhhcc" path="res://CharacterIcon.jpg" id="1_k00qp"]
+
+[sub_resource type="GDScript" id="GDScript_fog21"]
+resource_name = "GameController"
+script/source = "extends Node2D
+@onready var PlayerCollision = get_child(1)
+@onready var MiniGate1 = get_child(2)
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if Input.is_action_pressed(\"ui_cancel\"):
+		get_tree().quit()
+	
+	if PlayerCollision.collision != null:
+		print(MiniGate1)
+		print(PlayerCollision.collision.get_collider())
+		if PlayerCollision.collision.get_collider() == MiniGate1.get_child(0):
+			get_tree().change_scene_to_file(\"res://Minigame1.tscn\")
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_lm8c3"]
+resource_name = "Obstacle"
+script/source = "extends RigidBody2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	print(get_collision_exceptions())
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_otr12"]
+
+[sub_resource type="GDScript" id="GDScript_x3hud"]
+resource_name = "MinigameGate1"
+script/source = "extends Node2D
+@onready var PlayerCollision = get_parent().get_child(1)
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	var collision = KinematicCollision2D.new()
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+	
+
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gu5ji"]
+size = Vector2(398.349, 215.5)
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_fog21")
+
+[node name="Border" type="RigidBody2D" parent="."]
+position = Vector2(588, 378)
+gravity_scale = 0.0
+script = SubResource("GDScript_lm8c3")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Border"]
+position = Vector2(-58.4049, -20.5)
+scale = Vector2(32.0181, 5)
+build_mode = 1
+polygon = PackedVector2Array(18.0962, 17.1, 18.0649, 0.5, 17.9938, -67.9, -15.6173, -66.7, -15.7716, 48.1, 18.2523, 48.5, 17.963, 55.1, -16.5432, 55.7, -16.4815, -71.7, 18.9506, -71.9, 19.1358, 57.5, 18.1173, 57.3, 18.7833, 47.9, 18.0962, 48.5)
+metadata/Color = Color(0, 0, 0, 1)
+
+[node name="Player" type="RigidBody2D" parent="."]
+position = Vector2(246, 145)
+gravity_scale = 0.0
+script = ExtResource("1_763sq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+scale = Vector2(1, 1.5)
+shape = SubResource("CapsuleShape2D_otr12")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_k00qp")
+
+[node name="MinigameGate1" type="Node2D" parent="."]
+position = Vector2(791, 46)
+script = SubResource("GDScript_x3hud")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="MinigameGate1"]
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MinigameGate1/RigidBody2D"]
+shape = SubResource("RectangleShape2D_gu5ji")
