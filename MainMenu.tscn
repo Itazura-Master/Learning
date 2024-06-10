@@ -1,0 +1,135 @@
+[gd_scene load_steps=3 format=3 uid="uid://lg2h4w0o8vdi"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_4qt8w"]
+[ext_resource type="Script" path="res://Display.gd" id="2_jqnjt"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4qt8w")
+
+[node name="Play Game" type="Button" parent="."]
+layout_mode = 0
+offset_left = 532.0
+offset_top = 148.0
+offset_right = 682.0
+offset_bottom = 198.0
+text = "Play Game"
+
+[node name="Settings" type="Button" parent="."]
+layout_mode = 0
+offset_left = 532.0
+offset_top = 226.0
+offset_right = 682.0
+offset_bottom = 276.0
+text = "Settings"
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 532.0
+offset_top = 306.0
+offset_right = 682.0
+offset_bottom = 356.0
+text = "Exit Game"
+
+[node name="SettingsMenu" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 476.0
+offset_top = 661.0
+offset_right = 808.0
+offset_bottom = 1018.0
+
+[node name="ColorRect" type="ColorRect" parent="SettingsMenu"]
+layout_mode = 0
+offset_right = 332.0
+offset_bottom = 357.0
+color = Color(0.223529, 0.12549, 0.380392, 1)
+
+[node name="SettingsLabel" type="Label" parent="SettingsMenu"]
+visibility_layer = 7
+layout_mode = 0
+offset_left = 71.0
+offset_top = 26.0
+offset_right = 251.0
+offset_bottom = 89.0
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Volume" type="Control" parent="SettingsMenu"]
+visibility_layer = 7
+anchors_preset = 0
+offset_left = 72.0
+offset_top = 73.0
+offset_right = 72.0
+offset_bottom = 73.0
+
+[node name="SFX" type="Label" parent="SettingsMenu/Volume"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 6.0
+offset_right = 165.0
+offset_bottom = 42.0
+text = "SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFX" type="HSlider" parent="SettingsMenu/Volume/SFX"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 44.0
+offset_right = 133.0
+offset_bottom = 69.0
+value = 100.0
+
+[node name="Display" type="Label" parent="SettingsMenu/Volume/SFX/SFX"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 1.0
+offset_right = 180.0
+offset_bottom = 24.0
+script = ExtResource("2_jqnjt")
+
+[node name="Music" type="Label" parent="SettingsMenu/Volume"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 91.0
+offset_right = 146.0
+offset_bottom = 125.0
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music" type="HSlider" parent="SettingsMenu/Volume/Music"]
+layout_mode = 0
+offset_left = -35.0
+offset_top = 37.0
+offset_right = 108.0
+offset_bottom = 59.0
+value = 100.0
+
+[node name="Display" type="Label" parent="SettingsMenu/Volume/Music/Music"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 1.0
+offset_right = 192.0
+offset_bottom = 24.0
+script = ExtResource("2_jqnjt")
+
+[node name="ExitSettings" type="Button" parent="SettingsMenu"]
+layout_mode = 0
+offset_left = 282.0
+offset_top = 3.0
+offset_right = 324.0
+offset_bottom = 35.0
+text = "X"
+
+[connection signal="pressed" from="Play Game" to="." method="_on_play_game_pressed"]
+[connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="SettingsMenu/ExitSettings" to="." method="_on_exitsettings_pressed"]
+[connection signal="pressed" from="SettingsMenu/ExitSettings" to="." method="_on_exit_settings_pressed"]
