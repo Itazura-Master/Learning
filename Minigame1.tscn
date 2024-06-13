@@ -1,6 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://wa5hnbjstfdj"]
+[gd_scene load_steps=5 format=3 uid="uid://wa5hnbjstfdj"]
 
 [ext_resource type="Script" path="res://SceneController.gd" id="1_gqs6j"]
+[ext_resource type="Texture2D" uid="uid://850kpr6oe4ya" path="res://CherryBlossomTreesBackground.jpg" id="2_c31dh"]
+[ext_resource type="Script" path="res://Follow.gd" id="2_ubvna"]
+
+[sub_resource type="Curve2D" id="Curve2D_qqqrb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 202.99, 21.8311, 0, 0, 0, 0, -1120.1, 21.8311)
+}
+point_count = 2
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_gqs6j")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(1505, 314)
+scale = Vector2(2.05429, 1.92386)
+curve = SubResource("Curve2D_qqqrb")
+script = ExtResource("2_ubvna")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(202.99, 21.8311)
+rotation = 3.14159
+scale = Vector2(1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+rotation = 3.14159
+scale = Vector2(1, 1)
+texture = ExtResource("2_c31dh")
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-499.702, 21.8311)
+rotation = 3.14159
+scale = Vector2(1, 1)
+progress = 702.692
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D2"]
+rotation = 3.14159
+scale = Vector2(1, 1)
+texture = ExtResource("2_c31dh")

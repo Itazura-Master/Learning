@@ -131,5 +131,5 @@ text = "X"
 [connection signal="pressed" from="Play Game" to="." method="_on_play_game_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="SettingsMenu/ExitSettings" to="." method="_on_exitsettings_pressed"]
 [connection signal="pressed" from="SettingsMenu/ExitSettings" to="." method="_on_exit_settings_pressed"]
+[connection signal="pressed" from="SettingsMenu/ExitSettings" to="." method="_on_exitsettings_pressed"]

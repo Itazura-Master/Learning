@@ -6,7 +6,6 @@ extends RigidBody2D
 func _ready():
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_pressed("ui_right"):
@@ -18,3 +17,8 @@ func _process(delta):
 	if Input.is_action_pressed("ui_down"):
 		collision = move_and_collide(Vector2(0,5))
 	pass
+
+
+func _on_canvas_layer_use_movement_vector(moveVector):
+	collision = move_and_collide(moveVector * 5)
+	pass # Replace with function body.

@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bvd8x6j8t5alp"]
+[gd_scene load_steps=14 format=3 uid="uid://bvd8x6j8t5alp"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_763sq"]
 [ext_resource type="Texture2D" uid="uid://o0oy03yjhhcc" path="res://CharacterIcon.jpg" id="1_k00qp"]
 [ext_resource type="Texture2D" uid="uid://cdoaq2fwbiwea" path="res://Ground.jpg" id="3_fynp1"]
 [ext_resource type="Texture2D" uid="uid://dt6x3fwknmpeb" path="res://TilesetFolder/Tilesheet/tilesheet_complete.png" id="4_qkwtk"]
+[ext_resource type="PackedScene" uid="uid://c1llok44ckhr7" path="res://MobileControls.tscn" id="5_jbou6"]
 
 [sub_resource type="GDScript" id="GDScript_fog21"]
 resource_name = "GameController"
@@ -963,3 +964,7 @@ tile_set = SubResource("TileSet_e0hfe")
 collision_animatable = true
 format = 2
 layer_0/tile_data = PackedInt32Array(65536, 131072, 1342177280, 131072, 131072, 1342177280, 196608, 131072, 1342177280, 262144, 131072, 1342177280, 327680, 131072, 1342177280, 393216, 131072, 1342177280, 458752, 262144, 2, 524288, 0, 0, 589824, 0, 0, 589825, 0, 1, 589826, 262144, 2, 589827, 131072, 0, 589828, 131072, 0, 589829, 131072, 0, 589830, 131072, 0, 589831, 131072, 0, 589832, 131072, 0, 589833, 131072, 0, 589834, 131072, 0, 589835, 131072, 0, 589836, 131072, 0, 589837, 131072, 0, 589838, 131072, 0, 589839, 131072, 0, 589840, 131072, 0, 589841, 131072, 1610612738, 524290, 262144, 1, 458753, 262144, 1, 524289, 262144, 2, 0, 262144, 1342177282, 1, 131072, 805306368, 2, 131072, 805306368, 3, 131072, 805306368, 4, 131072, 805306368, 5, 131072, 805306368, 6, 131072, 805306368, 7, 131072, 805306368, 8, 131072, 805306368, 9, 131072, 805306368, 10, 131072, 805306368, 11, 131072, 805306368, 12, 131072, 805306368, 13, 131072, 805306368, 14, 131072, 805306368, 15, 131072, 805306368, 16, 131072, 805306368, 17, 262144, 805306370, 65553, 393216, 1610612736, 131089, 393216, 1610612736, 196625, 393216, 1610612736, 262161, 393216, 1610612736, 327697, 393216, 1610612736, 393233, 393216, 1610612736, 458769, 393216, 1610612736, 524305, 393216, 1610612736, 589843, 131072, 1610612738)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("5_jbou6")]
+
+[connection signal="useMovementVector" from="CanvasLayer" to="Player" method="_on_canvas_layer_use_movement_vector"]
